@@ -33,6 +33,8 @@ export const Top = Template.bind({});
 
 export const Bottom = Template.bind({});
 
+export const HideUntilUsed = Template.bind({});
+
 Top.args = {
     position: "top",
     source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
@@ -44,4 +46,12 @@ Bottom.args = {
     artist: "Bottom Artist",
     bgColor: "rgba(0, 0, 0, 0.5)",
     source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+};
+
+HideUntilUsed.args = {
+    position: "bottom",
+    title: "Hide Until Used",
+    artist: "Bottom Artist",
+    source: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    hideUntilUsed: true,
 };

@@ -2,8 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import { PlayerComponentProps } from './Player.types';
 import './Player.css';
 import { FaPause, FaPlay } from 'react-icons/fa';
+import { PlayButton } from './components/PlayButton';
+import { Metadata } from './components/Metadata';
 
 const Player = ({
+    hideUntilUsed = false,
     bgColor = 'rgba(0, 0, 0, 0.5)',
     position = 'bottom',
     title = 'Your Title Here',
@@ -70,6 +73,7 @@ const Player = ({
         <div
             className='player'
             style={{
+                display: hideUntilUsed ? 'none' : 'flex',
                 bottom: position === 'bottom' ? '10px' : 'auto',
                 top: position === 'top' ? '10px' : 'auto',
                 alignItems: 'center',
@@ -79,24 +83,18 @@ const Player = ({
             <audio
                 ref={audioRef}
             />
-            <button
-                className='player__button'
-                onClick={() => { togglePlay() }}
-            >
-                {playing ? <FaPause
-                    className='player__button--pause'
-                /> : <FaPlay
-                    className='player__button--play'
-                />}
-            </button>
+            <PlayButton
+                onClick={togglePlay}
+                playing={playing}
+            />
             <img
                 className='player__artwork'
                 src={artwork} alt="avatar" />
-            <div
-                className='player__metadata'>
-                <div>{loading ? 'Loading...' : title}</div>
-                <div>{artist}</div>
-            </div>
+            <Metadata
+                artist={artist}
+                title={title}
+                loading={loading}
+            />
         </div>
     )
 }

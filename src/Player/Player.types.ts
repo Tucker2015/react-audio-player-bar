@@ -15,5 +15,7 @@ export interface PlayerComponentProps {
   /** Color of the Player
    * @default "#000"
    * */
+  /** Hide the Player bar until used */
+  hideUntilUsed?: boolean;
   bgColor?: string;
 }
